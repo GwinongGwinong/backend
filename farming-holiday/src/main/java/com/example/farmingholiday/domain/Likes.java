@@ -6,8 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Entity
-public class Likes {
+public class Likes { //TODO: 짜긴 했지만 확신 x
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Setter
@@ -19,14 +20,14 @@ public class Likes {
     private int likeType;
 
     @Setter
-    @OneToOne(optional = false)
+    @OneToOne
     private House house;
 
     @Setter
-    @OneToOne(optional = false)
+    @OneToOne
     private Host host;
 
     @Setter
-    @OneToOne(optional = false)
+    @OneToOne
     private FarmingHoliday farmingHoliday;
 }

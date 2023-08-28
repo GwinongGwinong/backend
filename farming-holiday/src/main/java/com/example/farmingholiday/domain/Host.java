@@ -10,27 +10,33 @@ import java.util.List;
 @Getter
 @Entity
 public class Host {
+    @OneToOne
+    private User user;
+
+    @OneToMany
+    private List<FarmingHolidayGuest> farmingHolidayGuest;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Setter
-    @Column(nullable = false, length = 50)
-    private String username;
 
     @Setter
     @OneToMany(orphanRemoval = false)
     private List<Hashtag> hashtags;
 
     @Setter
-    @OneToMany
+    @OneToMany(orphanRemoval = false)
+    private List<FarmingHoliday> farmingHolidays;
+
+    @Setter
+    @OneToMany(orphanRemoval = false)
     private List<House> houses;
 
     @Setter
-    @Column(name = "review_count")
-    private long reviewCount;
+    @Column
+    private double rate;
 
     @Setter
     @Column(length = 10000)
-    private String detail;
+    private String explanation;
 }

@@ -1,47 +1,35 @@
 package com.example.farmingholiday.domain;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Entity
 public class Guest {
+    @OneToOne
+    private User user;
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50)
-    private String password;
-
-    @Column(nullable = false, length = 50)
-    private String name;
-
-    @Column(nullable = false)
-    private LocalDateTime birth;
-
-    @Column(nullable = false, length = 200)
-    private String email;
-
-    @Column(length = 50)
-    private String phoneNumber;
-
-    @Column(nullable = false, length = 50)
-    private String address;
-
-    @Column(length = 100)
-    private String detailAddress;
-
+    @Setter
+    @Column
     private long reviews;
 
+    @Setter
+    @Column
     private long workedDays;
 
+    @Setter
+    @Column
     private long earnings;
 
-    @ManyToOne
-    private House house;
+    @OneToMany
+    private List<FarmingHolidayGuest> farmingHolidayGuests;
 }

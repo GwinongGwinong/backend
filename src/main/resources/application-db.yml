@@ -4,3 +4,5 @@ spring:
     url: jdbc:mysql://localhost:3306/farming_holiday?serverTimezone=UTC&characterEncoding=UTF-8
     username: farming_holiday
     password: 1234
+server:
+  address: 127.0.0.1

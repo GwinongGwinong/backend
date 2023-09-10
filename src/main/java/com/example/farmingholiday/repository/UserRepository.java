@@ -1,7 +1,9 @@
 package com.example.farmingholiday.repository;
 
-import com.example.farmingholiday.domain.User;
+import com.example.farmingholiday.domain.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+@Repository
+public interface UserRepository extends JpaRepository<Users, Long> {
 }

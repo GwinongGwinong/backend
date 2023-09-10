@@ -17,7 +17,6 @@ public class FarmingHoliday {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //TODO: erd에 호스트에 대한 연관관계가 없음 -> 추가 완료
     @Setter
     @ManyToOne(optional = false)
     private Host host;

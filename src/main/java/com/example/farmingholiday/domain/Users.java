@@ -16,7 +16,9 @@ public class Users {
     @Column(nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private UserType userType = UserType.GUEST;
-
+    /*김용빈 : 제 개인적인 견해로는 미래를 생각해서 이런식으로 host와 guest를 나누는 것보다 host와 user domain을 따로 만드는 것이 좋아보입니다.
+    * 왜냐하면 리뷰 갯수나, 좋아요를 누른 패키지, 집 등등 유저 개인정보를 제외하곤 호스트와 겹치는 부분이 그렇게 많아 보이지 않습니다.
+    */
     @Setter
     @Column(nullable = false, length = 50)
     private String email;

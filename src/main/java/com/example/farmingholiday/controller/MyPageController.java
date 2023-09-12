@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController("/mypage")
 public class MyPageController {
-    //TODO: 이런거 원래 토큰으로 자기 정보 조회하게 하는 것 같은데 어떻게 하는건지 몰라서 그냥 id 넘겨주게 했습니다ㅠ
+    //TODO: 추후에 authentication이 추가되면 권한에 따라 출력해주는 페이지가 달라지게 설정
+    //
     @GetMapping("/guest/{id}")
     public MyPageGuestDto getGuestMyPageInfo(@PathVariable String id){
+
         return MyPageGuestDto.builder().build();
     }
 

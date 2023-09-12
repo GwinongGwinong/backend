@@ -1,5 +1,6 @@
 package com.example.farmingholiday.dto;
 
+import com.example.farmingholiday.domain.House;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -21,4 +22,19 @@ public class BlockHouseDto {
     private long rent;
     private long rentMonths;
     private RecruitStatus recruitStatus;
+
+    static public BlockHouseDto from(House entity){
+        return new BlockHouseDto(
+                entity.getName(),
+                entity.getRate(),
+                entity.getLocation(),
+                "김호스트", //entity.getHost().getName();
+                entity.getRentStartDate(),
+                entity.getRentEndDate(),
+                entity.getRent(),
+                entity.getRentMonths(),
+                entity.getRecruitStatus()
+        );
+    }
+
 }

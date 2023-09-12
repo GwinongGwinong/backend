@@ -99,4 +99,14 @@ public class FarmingHoliday {
 
     @OneToMany
     private List<House> houses;
+
+    public FarmingHoliday(){}
+
+    public FarmingHoliday(String name, String location, String address, long pay, long payMonths) {
+        this.name = name;
+        this.location = location;
+        this.address = address;
+        this.pay = pay;
+        this.payMonths = payMonths;
+    }
 }

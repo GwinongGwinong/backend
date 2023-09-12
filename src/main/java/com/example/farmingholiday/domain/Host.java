@@ -10,15 +10,15 @@ import java.util.List;
 @Getter
 @Entity
 public class Host {
-    @OneToOne
-    private User user;
-
-    @OneToMany
-    private List<FarmingHolidayGuest> farmingHolidayGuest;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @OneToOne
+    private Users users;
+
+    @OneToMany
+    private List<FarmingHolidayGuest> farmingHolidayGuest;
 
     @Setter
     @OneToMany(orphanRemoval = false)

@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Entity
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -48,4 +48,23 @@ public class User {
     @Setter
     @Column(nullable = false, length = 200)
     private String imagePath;
+
+
+    public Users(UserType userType, String email, String password, String name, String birth, String phoneNumber, String address, String detailAddress, String imagePath) {
+        this.userType = userType;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.birth = birth;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.detailAddress = detailAddress;
+        this.imagePath = imagePath;
+    }
+
+    public Users() {}
+
+    public static Users of(UserType userType, String email, String password, String name, String birth, String phoneNumber, String address, String detailAddress, String imagePath) {
+        return new Users(userType, email, password, name, birth, phoneNumber, address, detailAddress, imagePath);
+    }
 }

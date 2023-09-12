@@ -1,13 +1,12 @@
 spring:
   profiles:
-    include:
-      - db
+    active: db
 
   jpa:
     hibernate:
       ddl-auto: create
     generate-ddl: true
-    show-sql: false
+    show-sql: true
     database: mysql
     defer-datasource-initialization: true
   # 처음 : ddl-auto: create / generate-ddl: true / spring.sql.init.mode: always

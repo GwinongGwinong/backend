@@ -1,21 +1,21 @@
-INSERT INTO user(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
+INSERT INTO users(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
 VALUES ('HOST', 'test_host1@naver.com', 'test', '양춘식', '000101', '01012345678', '인천시 미추홀구', '1층', '이미지 경로');
-INSERT INTO user(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
+INSERT INTO users(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
 VALUES ('HOST', 'test_host2@naver.com', 'test', '김준범', '000101', '01012345678', '인천시 미추홀구', '1층', '이미지 경로');
-INSERT INTO user(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
+INSERT INTO users(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
 VALUES ('HOST', 'test_host3@naver.com', 'test', '정은주', '000101', '01012345678', '인천시 미추홀구', '1층', '이미지 경로');
-INSERT INTO user(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
+INSERT INTO users(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
 VALUES ('HOST', 'test_host4@naver.com', 'test', '임지영', '000101', '01012345678', '인천시 미추홀구', '1층', '이미지 경로');
-INSERT INTO user(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
+INSERT INTO users(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
 VALUES ('HOST', 'test_host5@inha.edu', 'test', '임춘식', '000101', '01012345678', '인천시 미추홀구', '1층', '이미지 경로');
-INSERT INTO user(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
+INSERT INTO users(user_type, email, password, name, birth, phone_number, address, detail_address, image_path)
 VALUES ('GUEST', 'test_guest@inha.edu', 'test', '테스트 게스트', '000101', '01012345678', '인천시 미추홀구', '1층', '이미지 경로');
 
-INSERT INTO host(rate, user_id, explanation) VALUES ('4.91', 1, '양춘식 호스트 설명');
-INSERT INTO host(rate, user_id, explanation) VALUES ('4.91', 2, '김준범 호스트 설명');
-INSERT INTO host(rate, user_id, explanation) VALUES ('4.91', 3, '정은주 호스트 설명');
-INSERT INTO host(rate, user_id, explanation) VALUES ('4.91', 4, '임지영 호스트 설명');
-INSERT INTO host(rate, user_id, explanation) VALUES ('4.91', 5, '임춘식 호스트 설명');
+INSERT INTO host(rate, users_id, explanation) VALUES ('4.91', 1, '양춘식 호스트 설명');
+INSERT INTO host(rate, users_id, explanation) VALUES ('4.91', 2, '김준범 호스트 설명');
+INSERT INTO host(rate, users_id, explanation) VALUES ('4.91', 3, '정은주 호스트 설명');
+INSERT INTO host(rate, users_id, explanation) VALUES ('4.91', 4, '임지영 호스트 설명');
+INSERT INTO host(rate, users_id, explanation) VALUES ('4.91', 5, '임춘식 호스트 설명');
 
 INSERT INTO hashtag(host_id, content) VALUES (1, '양봉 30년차');
 INSERT INTO hashtag(host_id, content) VALUES (1, '꿀벌로 강남 건물주');

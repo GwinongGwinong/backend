@@ -1,5 +1,6 @@
 package com.example.farmingholiday.dto;
 
+import com.example.farmingholiday.domain.FarmingHoliday;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -31,4 +32,27 @@ public class FarmingHolidayDto {
     private String explanation;
     private String lat;
     private String lon;
+
+    public static FarmingHolidayDto from(FarmingHoliday entity){
+        return new FarmingHolidayDto(
+                entity.getName(),
+                entity.getLocation(),
+                entity.getAddress(),
+                entity.getRecruitStartDate(),
+                entity.getRecruitEndDate(),
+                entity.getWorkStartDate(),
+                entity.getWorkEndDate(),
+                entity.getWorkWeekday(),
+                entity.getWorkTime(),
+                entity.getRecruitNumber(),
+                entity.getApplyNumber(),
+                entity.getPay(),
+                entity.getPayMonths(),
+                entity.getRate(),
+                entity.getRecruitStatus(),
+                entity.getExplanation(),
+                entity.getLat(),
+                entity.getLon()
+        );
+    }
 }

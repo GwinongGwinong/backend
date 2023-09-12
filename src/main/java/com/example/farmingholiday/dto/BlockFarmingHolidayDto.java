@@ -1,5 +1,6 @@
 package com.example.farmingholiday.dto;
 
+import com.example.farmingholiday.domain.FarmingHoliday;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -20,4 +21,17 @@ public class BlockFarmingHolidayDto {
     private long payMonths;
     private double rate;
     private RecruitStatus recruitStatus;
+
+    static public BlockFarmingHolidayDto from(FarmingHoliday entity){
+        return new BlockFarmingHolidayDto(
+                entity.getName(),
+                entity.getLocation(),
+                entity.getRecruitStartDate(),
+                entity.getRecruitEndDate(),
+                entity.getPay(),
+                entity.getPayMonths(),
+                entity.getRate(),
+                entity.getRecruitStatus()
+        );
+    }
 }

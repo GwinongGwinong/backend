@@ -32,5 +32,4 @@ public class FarmingHolidayService {
                 .map(BlockFarmingHolidayDto::from)
                 .collect(Collectors.toList());
     }
-
 }

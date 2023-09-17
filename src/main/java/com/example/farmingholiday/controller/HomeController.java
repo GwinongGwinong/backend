@@ -4,6 +4,7 @@ import com.example.farmingholiday.dto.HomePageDto;
 import com.example.farmingholiday.service.FarmingHolidayService;
 import com.example.farmingholiday.service.HostService;
 import com.example.farmingholiday.service.HouseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ public class HomeController {
     final private FarmingHolidayService farmingHolidayService;
     final private HostService hostService;
     final private HouseService houseService;
+
     @Autowired
     public HomeController(FarmingHolidayService farmingHolidayService, HostService hostService, HouseService houseService) {
         this.farmingHolidayService = farmingHolidayService;

@@ -12,7 +12,6 @@ public class MyPageController {
     //
     @GetMapping("/guest/{id}")
     public MyPageGuestDto getGuestMyPageInfo(@PathVariable String id){
-
         return MyPageGuestDto.builder().build();
     }
 

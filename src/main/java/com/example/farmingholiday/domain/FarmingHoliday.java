@@ -11,93 +11,77 @@ import java.util.List;
 // 데이터 : 이름, 지역, 주소, 신청기간, 근무기간, 근무요일, 근무시간, 모집인원, 신청인원, 월급, 개월 수, 근무지 주소, 메인 이미지, 상세 이미지
 
 @Getter
+@Setter
 @Entity
 public class FarmingHoliday {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Setter
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Host host;
 
-    @Setter
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Setter
     @Column(nullable = false, length = 200)
     private String location;
 
-    @Setter
     @Column(nullable = false, length = 200)
     private String address;
 
-    @Setter
     @Column(nullable = false)
     private long pay;
 
-    @Setter
     @Column(nullable = false)
     private long payMonths;
 
-    @Setter
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false)
     private String mainImagePath;
 
-    @Setter
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false)
     private String detailImagePath;
 
-    @Setter
+    @Column(nullable = false)
     private LocalDateTime recruitStartDate;
 
-    @Setter
+    @Column(nullable = false)
     private LocalDateTime recruitEndDate;
 
-    @Setter
+    @Column(nullable = false)
     private LocalDateTime workStartDate;
 
-    @Setter
+    @Column(nullable = false)
     private LocalDateTime workEndDate;
 
-    @Setter
-    @Column(length = 50)
+    @Column(nullable = false)
     private String workWeekday;
 
-    @Setter
-    @Column(length = 50)
+    @Column(nullable = false)
     private String workTime;
 
-    @Setter
     @Column(nullable = false)
     private long recruitNumber;
 
-    @Setter
     @Column(nullable = false)
     private long applyNumber;
 
-    @Setter
     @Column
     @Enumerated(EnumType.STRING)
     private RecruitStatus recruitStatus = RecruitStatus.ON_GOING;
 
-    @Setter
     @Column(nullable = false, length = 10000)
     private String explanation;
 
-    @Setter
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String lat;
 
-    @Setter
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String lon;
 
-    @Setter
     private double rate;
 
-    @OneToMany
+    @OneToMany(mappedBy = "farmingHoliday")
     private List<House> houses;
 
     public FarmingHoliday(){}

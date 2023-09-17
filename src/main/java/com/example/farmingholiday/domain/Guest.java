@@ -11,9 +11,6 @@ import java.util.List;
 @Setter
 @Entity
 public class Guest {
-    @OneToOne
-    private Users users;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -36,7 +33,7 @@ public class Guest {
     @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false)
     private String imagePath;
 
     @Column
@@ -48,6 +45,6 @@ public class Guest {
     @Column
     private long earnings;
 
-    @OneToMany
+    @OneToMany(mappedBy = "guest")
     private List<FarmingHolidayGuest> farmingHolidayGuests;
 }

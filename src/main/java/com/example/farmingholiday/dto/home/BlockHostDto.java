@@ -16,12 +16,16 @@ public class BlockHostDto {
     private String name;
     private List<String> hashtags;
     private double rate;
+    private long id;
+    private boolean isLike;
 
-    static public BlockHostDto from(Host entity, List<String> hashtags){
+    static public BlockHostDto from(Host entity, List<String> hashtags, boolean isLike){
         return BlockHostDto.builder()
             .name(entity.getName())
             .hashtags(hashtags)
             .rate(entity.getRate())
+            .id(entity.getId())
+            .isLike(isLike)
             .build();
     }
 }

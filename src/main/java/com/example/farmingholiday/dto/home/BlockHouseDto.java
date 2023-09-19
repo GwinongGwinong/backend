@@ -23,8 +23,10 @@ public class BlockHouseDto {
     private long rent;
     private long rentMonths;
     private RecruitStatus recruitStatus;
+    private long id;
+    private boolean isLike;
 
-    static public BlockHouseDto from(House entity, String hostName){
+    static public BlockHouseDto from(House entity, String hostName, boolean isLike){
         return new BlockHouseDto(
                 entity.getName(),
                 entity.getRate(),
@@ -34,7 +36,9 @@ public class BlockHouseDto {
                 entity.getRentEndDate(),
                 entity.getRent(),
                 entity.getRentMonths(),
-                entity.getRecruitStatus()
+                entity.getRecruitStatus(),
+                entity.getId(),
+                isLike
         );
     }
 }

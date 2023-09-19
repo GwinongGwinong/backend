@@ -33,8 +33,10 @@ public class FarmingHolidayDto {
     private String explanation;
     private String lat;
     private String lon;
+    private long id;
+    private boolean isLike;
 
-    public static FarmingHolidayDto from(FarmingHoliday entity){
+    public static FarmingHolidayDto from(FarmingHoliday entity, boolean isLike){
         return new FarmingHolidayDto(
                 entity.getName(),
                 entity.getLocation(),
@@ -53,7 +55,9 @@ public class FarmingHolidayDto {
                 entity.getRecruitStatus(),
                 entity.getExplanation(),
                 entity.getLat(),
-                entity.getLon()
+                entity.getLon(),
+                entity.getId(),
+                isLike
         );
     }
 }

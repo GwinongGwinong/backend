@@ -17,13 +17,17 @@ public class HostDto {
     private List<String> hashtags;
     private String explanation;
     private double rate;
+    private long id;
+    private boolean isLike;
 
-    public static HostDto from(Host entity, List<String> hashtags){
+    public static HostDto from(Host entity, List<String> hashtags, boolean isLike){
         return HostDto.builder()
             .name(entity.getName())
             .hashtags(hashtags)
             .explanation(entity.getExplanation())
             .rate(entity.getRate())
+            .id(entity.getId())
+            .isLike(isLike)
             .build();
     }
 }

@@ -44,15 +44,15 @@ public class GuestMyPageService {
     // 게스트가 좋아요 누른 파홀을 Block dto 로 리턴
     List<BlockFarmingHolidayDto> likeFarmingHoliday =
         likeFarmingHolidayRepository.findAllByGuest(guest).stream()
-        .map(e -> BlockFarmingHolidayDto.from(e.getFarmingHoliday())).toList();
+        .map(e -> BlockFarmingHolidayDto.from(e.getFarmingHoliday(), true)).toList();
 
     List<BlockHouseDto> likeHouse =
         likeHouseRepository.findAllByGuest(guest).stream()
-            .map(e -> BlockHouseDto.from(e.getHouse(), e.getHouse().getFarmingHoliday().getHost().getName())).toList();
+            .map(e -> BlockHouseDto.from(e.getHouse(), e.getHouse().getFarmingHoliday().getHost().getName(), true)).toList();
 
     List<BlockHostDto> likeHost =
         likeHostRepository.findAllByGuest(guest).stream()
-                .map(e -> BlockHostDto.from(e.getHost(), findHashtag(e.getHost()))).toList();
+                .map(e -> BlockHostDto.from(e.getHost(), findHashtag(e.getHost()), true)).toList();
 
     // 게스트 정보와 찜 목록을 MyPageLikesDto 로 묶어서 리턴
     return MyPageLikesDto.builder()
@@ -83,7 +83,8 @@ public class GuestMyPageService {
     for(Apply apply : applied){
       blockApplyDtoList.add(
           BlockApplyDto.builder()
-              .appliedFarmingHoliday(BlockFarmingHolidayDto.from(apply.getFarmingHoliday()))
+              .appliedFarmingHoliday(BlockFarmingHolidayDto.from(apply.getFarmingHoliday(),
+                  likeFarmingHolidayRepository.findByFarmingHolidayAndGuest(apply.getFarmingHoliday(), guest).isPresent()))
               .approvalStatus(apply.getApprovalStatus())
               .build());
     }

@@ -1,6 +1,7 @@
 package com.example.farmingholiday.dto.home;
 
 import com.example.farmingholiday.domain.FarmingHoliday;
+import com.example.farmingholiday.domain.LikeFarmingHoliday;
 import com.example.farmingholiday.dto.type.RecruitStatus;
 import lombok.*;
 
@@ -22,17 +23,21 @@ public class BlockFarmingHolidayDto {
     private long payMonths;
     private double rate;
     private RecruitStatus recruitStatus;
+    private long id;
+    private boolean isLike;
 
-    static public BlockFarmingHolidayDto from(FarmingHoliday entity){
-        return new BlockFarmingHolidayDto(
-                entity.getName(),
-                entity.getLocation(),
-                entity.getRecruitStartDate(),
-                entity.getRecruitEndDate(),
-                entity.getPay(),
-                entity.getPayMonths(),
-                entity.getRate(),
-                entity.getRecruitStatus()
-        );
+    static public BlockFarmingHolidayDto from(FarmingHoliday entity, boolean isLike){
+        return BlockFarmingHolidayDto.builder()
+            .name(entity.getName())
+            .location(entity.getLocation())
+            .recruitStartDate(entity.getRecruitStartDate())
+            .recruitEndDate(entity.getRecruitEndDate())
+            .pay(entity.getPay())
+            .payMonths(entity.getPayMonths())
+            .rate(entity.getRate())
+            .recruitStatus(entity.getRecruitStatus())
+            .id(entity.getId())
+            .isLike(isLike)
+            .build();
     }
 }

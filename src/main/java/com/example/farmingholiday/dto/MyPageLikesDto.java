@@ -1,5 +1,6 @@
 package com.example.farmingholiday.dto;
 
+import com.example.farmingholiday.domain.Guest;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

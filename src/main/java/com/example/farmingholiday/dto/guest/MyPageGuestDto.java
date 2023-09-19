@@ -17,7 +17,7 @@ public class MyPageGuestDto { // 내 정보 dto
     public static MyPageGuestDto from(Guest entity){
         return MyPageGuestDto.builder()
             .name(entity.getName())
-            .reviewCounts(entity.getReviews()) //TODO : 일관성을 위해서 review 테이블에서 직접 가져와야함
+            .reviewCounts(entity.getReviewCount())
             .workDays(entity.getWorkedDays())
             .earnings(entity.getEarnings())
             .build();

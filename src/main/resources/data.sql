@@ -8,11 +8,14 @@ VALUES
     ('host5@inha.edu', 'test', '임춘식', '960421', '01012345678', '인천시 미추홀구 1층', '이미지 경로', '4.31', '임춘식 호스트 설명');
 
 -- Inserting data into the 'guest' table
-INSERT INTO guest(email, password, name, birth, phone_number, address, image_path, reviews, worked_days, earnings)
+INSERT INTO guest(email, password, name, birth, phone_number, address, image_path, review_count, worked_days, earnings)
 VALUES
-    ('guest1@gmail.com', 'test', '손영희', '900101', '01011112222', '서울시 송파구 5층', '이미지 경로', 25, 210, 580),
-    ('guest2@yahoo.com', 'test', '김철수', '910202', '01033334444', '부산시 동래구 6층', '이미지 경로', 19, 185, 450),
-    ('guest3@hotmail.com', 'test', '이지민', '920303', '01055557777', '대전시 유성구 7층', '이미지 경로', 31, 250, 680);
+    ('guest1@gmail.com', 'test', '손영희', '900101', '01011112222', '서울시 송파구 5층', '이미지 경로', 3, 210, 580),
+    ('guest2@yahoo.com', 'test', '김철수', '910202', '01033334444', '부산시 동래구 6층', '이미지 경로', 2, 185, 450),
+    ('guest3@hotmail.com', 'test', '이지민', '920303', '01055557777', '대전시 유성구 7층', '이미지 경로', 3, 250, 680),
+    ('guest4@example.com', 'test', '홍길동', '930404', '01077778888', '인천시 남구 8층', '이미지 경로', 4, 280, 720),
+    ('guest5@outlook.com', 'test', '나영서', '940505', '01099990000', '광주시 서구 9층', '이미지 경로', 2, 200, 550),
+    ('guest6@gmail.com', 'test', '김용빈', '950606', '01022223333', '대구시 중구 10층', '이미지 경로', 3, 220, 600);
 
 -- Inserting data into the 'hashtag' table
 INSERT INTO hashtag(host_id, content)
@@ -110,14 +113,33 @@ VALUES
     4, '인터넷,에어컨,TV', '마당, 주차장, 바베큐, 파라솔', '경기도 양주시 백석읍 농업로 789', '37', '127', 'COMPLETED', 4.4, 10);
 
 -- Inserting data into the 'farming_holiday_guest' table
-INSERT INTO farming_holiday_guest_house(farming_holiday_id, guest_id, house_id, approval_status)
+INSERT INTO apply(farming_holiday_id, guest_id, house_id, approval_status)
 VALUES (1, 1, 1,'ACCEPTED'), -- 임실치즈마을 치즈공업, 손영희, 임실치즈마을 치즈공업 하우스 1
        (2, 1, 3, 'REFUSED'), -- 무화과 농장 체험, 손영희, 무화과 농장 체험 하우스 1
        (3, 1, 6, 'WAITING'), -- 전라북도 한우 농장 경영, 손영희, 한우 농장 민박 2
+       (10, 1, 19, 'WAITING'),
+       (1, 2, 2,'WAITING'),
+       (2, 2, 3, 'ACCEPTED'),
+       (3, 2, 6, 'WAITING'),
        (10, 1, 19, 'WAITING'),
        (4, 2, 8, 'ACCEPTED'),
        (5, 2, 10, 'REFUSED'),
        (6, 2, 12,'WAITING'),
        (7, 3, 13, 'ACCEPTED'),
        (8, 3, 15,'REFUSED'),
-       (9, 3, 18,'WAITING');
+       (9, 3, 18,'WAITING'),
+       (1, 4, 1, 'ACCEPTED'), -- 여기서부터 리뷰 작성만하는 게스트들
+       (2, 4, 3, 'ACCEPTED'),
+       (3, 5, 5, 'ACCEPTED'),
+       (4, 5, 8, 'ACCEPTED'),
+       (5, 6, 9, 'ACCEPTED'),
+       (6, 6, 11, 'ACCEPTED');
+
+INSERT INTO review (apply_id, title, content, guest_name, farming_holiday_rate, host_rate, house_rate, time)
+VALUES
+    (15, '파밍 홀리데이에서 느낀 것', '농장에서 좋은 시간을 보냈습니다.', '홍길동', 4.5, 4.8, 4.7, '2023-09-20 14:30:00'),
+    (16, '좋은 호스트와 함께', '호스트가 굉장히 친절했습니다.', '홍길동', 4.7, 4.9, 4.6, '2023-09-21 09:45:00'),
+    (17, '편안한 생황', '숙소가 편하고 청결했습니다.', '나영서', 4.6, 4.5, 4.8, '2023-09-22 18:15:00'),
+    (18, '훌륭한 농장 체험', '농장 체험은 환상적이었습니다!', '나영서', 4.9, 4.7, 4.9, '2023-09-23 11:30:00'),
+    (19, '친근한 호스트', '호스트가 가족처럼 느끼게 했습니다.', '김용빈', 4.8, 4.9, 4.8, '2023-09-24 16:20:00'),
+    (20, '아늑한 농가', '농가는 필요한 모든 편의 시설을 갖추고 있었습니다.', '김용빈', 4.7, 4.6, 4.7, '2023-09-25 20:00:00');

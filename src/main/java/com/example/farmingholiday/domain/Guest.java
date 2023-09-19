@@ -36,13 +36,13 @@ public class Guest {
     @Column(nullable = false)
     private String imagePath;
 
-    @Column
+    @Column(columnDefinition = "BIGINT DEFAULT 0")
     private long reviewCount;
 
-    @Column
+    @Column(columnDefinition = "BIGINT DEFAULT 0")
     private long workedDays;
 
-    @Column
+    @Column(columnDefinition = "BIGINT DEFAULT 0")
     private long earnings;
 
     @OneToMany(mappedBy = "guest")

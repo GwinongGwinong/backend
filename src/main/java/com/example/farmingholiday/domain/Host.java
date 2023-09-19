@@ -35,10 +35,10 @@ public class Host {
     @Column(nullable = false)
     private String imagePath;
 
-    @Column
+    @Column(columnDefinition ="DOUBLE DEFAULT 0")
     private double rate;
 
-    @Column
+    @Column(columnDefinition ="BIGINT DEFAULT 0")
     private Long reviewCount;
 
     @Column(length = 10000)

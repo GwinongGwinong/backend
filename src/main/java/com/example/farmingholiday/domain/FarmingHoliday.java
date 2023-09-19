@@ -79,10 +79,10 @@ public class FarmingHoliday {
     @Column(nullable = false)
     private String lon;
 
-    @Column
+    @Column(columnDefinition ="DOUBLE DEFAULT 0")
     private double rate;
 
-    @Column
+    @Column(columnDefinition ="BIGINT DEFAULT 0")
     private Long reviewCount;
 
     @OneToMany(mappedBy = "farmingHoliday")

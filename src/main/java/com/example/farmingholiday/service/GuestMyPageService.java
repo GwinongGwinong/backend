@@ -1,17 +1,18 @@
 package com.example.farmingholiday.service;
 
 import com.example.farmingholiday.domain.FarmingHolidayGuest;
+import com.example.farmingholiday.domain.FarmingHolidayGuestHouse;
 import com.example.farmingholiday.domain.Guest;
 import com.example.farmingholiday.domain.Hashtag;
 import com.example.farmingholiday.domain.Host;
-import com.example.farmingholiday.dto.BlockApplyDto;
+import com.example.farmingholiday.dto.guest.BlockApplyDto;
 import com.example.farmingholiday.dto.BlockFarmingHolidayDto;
 import com.example.farmingholiday.dto.BlockHostDto;
 import com.example.farmingholiday.dto.BlockHouseDto;
-import com.example.farmingholiday.dto.MyPageApplyDto;
-import com.example.farmingholiday.dto.MyPageGuestDto;
-import com.example.farmingholiday.dto.MyPageLikesDto;
-import com.example.farmingholiday.repository.FarmingHolidayGuestRepository;
+import com.example.farmingholiday.dto.guest.MyPageApplyDto;
+import com.example.farmingholiday.dto.guest.MyPageGuestDto;
+import com.example.farmingholiday.dto.guest.MyPageLikesDto;
+import com.example.farmingholiday.repository.FarmingHolidayGuestHouseRepository;
 import com.example.farmingholiday.repository.GuestRepository;
 import com.example.farmingholiday.repository.HashtagRepository;
 import com.example.farmingholiday.repository.LikeFarmingHolidayRepository;
@@ -24,20 +25,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MyPageService {
+public class GuestMyPageService {
   private final GuestRepository guestRepository;
   private final LikeFarmingHolidayRepository likeFarmingHolidayRepository;
   private final LikeHouseRepository likeHouseRepository;
   private final LikeHostRepository likeHostRepository;
   private final HashtagRepository hashtagRepository;
-  private final FarmingHolidayGuestRepository farmingHolidayGuestRepository;
+  private final FarmingHolidayGuestHouseRepository farmingHolidayGuestHouseRepository;
   
-  public MyPageGuestDto getGuestMyPageInfo(Long id) {
+  public MyPageGuestDto getGuestInfo(Long id) {
     Guest guest = guestRepository.findById(id).orElse(null);
     return MyPageGuestDto.from(guest);
   }
 
-  public MyPageLikesDto getGuestLikesInfo(Long id) {
+  public MyPageLikesDto getLikesInfo(Long id) {
     Guest guest = guestRepository.findById(id).orElse(null);
 
     // 게스트가 좋아요 누른 파홀을 Block dto 로 리턴
@@ -71,15 +72,15 @@ public class MyPageService {
     return hashtagContent;
   }
 
-  public MyPageApplyDto getGuestApplyInfo(Long id) {
+  public MyPageApplyDto getApplyInfo(Long id) {
     Guest guest = guestRepository.findById(id).orElse(null);
 
     // 게스트가 신청한 파홀
-    List<FarmingHolidayGuest> applied = farmingHolidayGuestRepository.findAllByGuest(guest);
+    List<FarmingHolidayGuestHouse> applied = farmingHolidayGuestHouseRepository.findAllByGuest(guest);
 
     // 신청한 파홀을 [block dto + 승인 상태]를 하나로 묶는 dto list 로 리턴
     List<BlockApplyDto> blockApplyDtoList = new ArrayList<>();
-    for(FarmingHolidayGuest apply : applied){
+    for(FarmingHolidayGuestHouse apply : applied){
       blockApplyDtoList.add(
           BlockApplyDto.builder()
               .appliedFarmingHoliday(BlockFarmingHolidayDto.from(apply.getFarmingHoliday()))
@@ -90,6 +91,7 @@ public class MyPageService {
     return MyPageApplyDto.builder()
         .myPageGuestDto(MyPageGuestDto.from(guest))
         .blockApplyDtoList(blockApplyDtoList)
+        .applyNum(blockApplyDtoList.size())
         .build();
   }
 }

@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest
 public class JpaRepositoryTest {
     private final FarmingHolidayRepository farmingHolidayRepository;
-    private final FarmingHolidayGuestRepository farmingHolidayGuestRepository;
+    private final FarmingHolidayGuestHouseRepository farmingHolidayGuestHouseRepository;
     private final GuestRepository guestRepository;
     private final HashtagRepository hashtagRepository;
     private final HostRepository hostRepository;
@@ -31,7 +31,7 @@ public class JpaRepositoryTest {
 
     public JpaRepositoryTest(
             @Autowired FarmingHolidayRepository farmingHolidayRepository,
-            @Autowired FarmingHolidayGuestRepository farmingHolidayGuestRepository,
+            @Autowired FarmingHolidayGuestHouseRepository farmingHolidayGuestHouseRepository,
             @Autowired GuestRepository guestRepository,
             @Autowired HashtagRepository hashtagRepository,
             @Autowired HostRepository hostRepository,
@@ -41,7 +41,7 @@ public class JpaRepositoryTest {
             @Autowired LikeHouseRepository likeHouseRepository,
             @Autowired NewsRepository newsRepository) {
         this.farmingHolidayRepository = farmingHolidayRepository;
-        this.farmingHolidayGuestRepository = farmingHolidayGuestRepository;
+        this.farmingHolidayGuestHouseRepository = farmingHolidayGuestHouseRepository;
         this.guestRepository = guestRepository;
         this.hashtagRepository = hashtagRepository;
         this.hostRepository = hostRepository;

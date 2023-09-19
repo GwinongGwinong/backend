@@ -16,12 +16,12 @@ public class DetailController {
     final private HostService hostService;
     final private HouseService houseService;
 
-    @GetMapping("/api/farming-holiday/detailed-info/{id}")
-    public DetailPageDto getDetailedInfo(@PathVariable Long id){ // Long 으로 바꿔도 괜찮은지 테스트하기
+    @GetMapping("/api/farming-holiday/detailed-info/{faholId}/{guestId}")
+    public DetailPageDto getDetailedInfo(@PathVariable Long faholId, @PathVariable Long guestId){ //TODO: 인증 후 수정
         return new DetailPageDto(
-                farmingHolidayService.getFarmingHoliday(id),
-                houseService.getDetailHouse(id),
-                hostService.getDetailHost(id)
+                farmingHolidayService.getFarmingHoliday(faholId, guestId),
+                houseService.getDetailHouse(faholId, guestId),
+                hostService.getDetailHost(faholId, guestId)
                 );
     }
 }

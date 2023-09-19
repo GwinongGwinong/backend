@@ -20,11 +20,11 @@ public class HomeController {
 
     // 리뷰 높은 순으로 3,3,4,6개씩 리턴
     @GetMapping("/api/home/{guestId}")
-    public HomePageDto getHomeInfo(@PathVariable Long guestId){
+    public HomePageDto getHomeInfo(@PathVariable Long guestId){ //TODO: 인증 후 수정
         HomePageDto homePageDto = new HomePageDto(
                 farmingHolidayService.get3BlockFarmingHolidays(guestId),
-                houseService.get3BlockHouses(),
-                hostService.get4BlockHost(),
+                houseService.get3BlockHouses(guestId),
+                hostService.get4BlockHost(guestId),
                 reviewService.get6BlockReview()
         );
         return homePageDto;

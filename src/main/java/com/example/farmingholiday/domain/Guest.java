@@ -37,7 +37,7 @@ public class Guest {
     private String imagePath;
 
     @Column
-    private long reviews;
+    private long reviewCount;
 
     @Column
     private long workedDays;

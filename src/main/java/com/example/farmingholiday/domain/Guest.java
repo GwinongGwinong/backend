@@ -1,7 +1,6 @@
 package com.example.farmingholiday.domain;
 
 
-import com.example.farmingholiday.dto.UserType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

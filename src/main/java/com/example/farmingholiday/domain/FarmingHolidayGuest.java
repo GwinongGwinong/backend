@@ -1,6 +1,6 @@
 package com.example.farmingholiday.domain;
 
-import com.example.farmingholiday.dto.ApprovalStatus;
+import com.example.farmingholiday.dto.type.ApprovalStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,7 @@
 package com.example.farmingholiday.dto;
 
 import com.example.farmingholiday.domain.House;
+import com.example.farmingholiday.dto.type.RecruitStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;

@@ -1,5 +1,6 @@
 package com.example.farmingholiday.dto;
 
+import com.example.farmingholiday.dto.type.UserType;
 import lombok.*;
 
 @Getter

@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HostRepository extends JpaRepository<Host, Long> {
   List<Host> findTop4ByOrderByRateDesc();
-  List<Host> findAllByFarmingHoliday(FarmingHoliday farmingHoliday);
 }

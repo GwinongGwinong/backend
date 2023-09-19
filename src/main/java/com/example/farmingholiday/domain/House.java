@@ -1,12 +1,11 @@
 package com.example.farmingholiday.domain;
 
-import com.example.farmingholiday.dto.RecruitStatus;
+import com.example.farmingholiday.dto.type.RecruitStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 // 데이터 : 몇인실인지, 이름, 지역, 주소, 숙박 시작과 끝, 숙박 기간(개월), 월세, 객실 형태, 면적, 객실시설, 부대시설, 평점, 호스트
 

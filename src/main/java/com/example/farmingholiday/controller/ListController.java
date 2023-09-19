@@ -1,5 +1,6 @@
 package com.example.farmingholiday.controller;
 
+import com.example.farmingholiday.dto.home.BlockReviewDto;
 import com.example.farmingholiday.dto.home.BlockFarmingHolidayDto;
 import com.example.farmingholiday.dto.home.BlockHostDto;
 import com.example.farmingholiday.dto.home.BlockHouseDto;
@@ -33,5 +34,10 @@ public class ListController {
     @GetMapping("/api/list/host")
     public List<BlockHostDto> getHostList(){
         return hostService.getBlockHost();
+    }
+
+    @GetMapping("/api/list/review")
+    public List<BlockReviewDto> getReviewList(){
+        reviewService.getBlockReview();
     }
 }

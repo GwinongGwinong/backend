@@ -17,7 +17,7 @@ public class DetailController {
     final private HostService hostService;
     final private HouseService houseService;
 
-    @GetMapping("farming-holiday/detailed-info/{id}")
+    @GetMapping("/api/farming-holiday/detailed-info/{id}")
     public DetailPageDto getDetailedInfo(@PathVariable Long id){ // Long 으로 바꿔도 괜찮은지 테스트하기
         return new DetailPageDto(
                 farmingHolidayService.getFarmingHoliday(id),

@@ -1,6 +1,7 @@
 package com.example.farmingholiday.controller;
 
-import com.example.farmingholiday.dto.ApplyFarmingHolidayDto;
+import com.example.farmingholiday.dto.BlockApplyDto;
+import com.example.farmingholiday.dto.MyPageApplyDto;
 import com.example.farmingholiday.dto.MyPageGuestDto;
 import com.example.farmingholiday.dto.MyPageHostDto;
 import com.example.farmingholiday.dto.MyPageLikesDto;
@@ -29,8 +30,8 @@ public class MyPageController {
     }
 
     @GetMapping("/api/guest/my-page/apply/{id}")
-    public ApplyFarmingHolidayDto getGuestApplyInfo(@PathVariable Long id){
-        return ApplyFarmingHolidayDto.builder().build();
+    public MyPageApplyDto getGuestApplyInfo(@PathVariable Long id){
+        return myPageService.getGuestApplyInfo(id);
     }
 
     @GetMapping("/api/host/my-page/{id}")

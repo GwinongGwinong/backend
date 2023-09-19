@@ -13,8 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ApplyFarmingHolidayDto {
-  private MyPageGuestDto myPageGuestDto;
-  private List<BlockFarmingHolidayDto> appliedHolidays;
-  private List<ApprovalStatus> approvalStatuses;
+public class BlockApplyDto {
+  private BlockFarmingHolidayDto appliedFarmingHoliday;
+  private ApprovalStatus approvalStatus;
 }

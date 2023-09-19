@@ -1,9 +1,6 @@
 package com.example.farmingholiday.dto.home;
 
 import com.example.farmingholiday.domain.Review;
-import com.example.farmingholiday.dto.ReviewDto;
-import jakarta.persistence.Column;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +18,7 @@ public class BlockReviewDto {
 
   static public BlockReviewDto from(Review entity){
     return BlockReviewDto.builder()
-        .farmingHolidayName(entity.getFarmingHolidayGuestHouse().getFarmingHoliday().getName())
+        .farmingHolidayName(entity.getApply().getFarmingHoliday().getName())
         .title(entity.getTitle())
         .build();
   }

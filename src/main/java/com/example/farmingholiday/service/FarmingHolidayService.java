@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FarmingHolidayService {
     private final FarmingHolidayRepository farmingHolidayRepository;
-    //TODO:리뷰에 대한 domain 구현
 
     @Transactional(readOnly = true)
     public FarmingHolidayDto getFarmingHoliday(long id){

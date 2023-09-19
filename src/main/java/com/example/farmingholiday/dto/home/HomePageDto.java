@@ -13,4 +13,5 @@ public class HomePageDto {
     private List<BlockFarmingHolidayDto> farmingHolidays;
     private List<BlockHouseDto> houses;
     private List<BlockHostDto> hosts;
+    private List<BlockReviewDto> reviews;
 }

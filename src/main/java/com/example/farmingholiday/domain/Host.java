@@ -38,6 +38,9 @@ public class Host {
     @Column
     private double rate;
 
+    @Column
+    private Long reviewCount;
+
     @Column(length = 10000)
     private String explanation;
 

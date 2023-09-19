@@ -1,7 +1,7 @@
 package com.example.farmingholiday.service;
 
 
-import com.example.farmingholiday.domain.FarmingHolidayGuestHouse;
+import com.example.farmingholiday.domain.Apply;
 import com.example.farmingholiday.domain.Guest;
 import com.example.farmingholiday.domain.Hashtag;
 import com.example.farmingholiday.domain.Host;
@@ -12,7 +12,7 @@ import com.example.farmingholiday.dto.home.BlockHouseDto;
 import com.example.farmingholiday.dto.guest.MyPageApplyDto;
 import com.example.farmingholiday.dto.guest.MyPageGuestDto;
 import com.example.farmingholiday.dto.guest.MyPageLikesDto;
-import com.example.farmingholiday.repository.FarmingHolidayGuestHouseRepository;
+import com.example.farmingholiday.repository.ApplyRepository;
 import com.example.farmingholiday.repository.GuestRepository;
 import com.example.farmingholiday.repository.HashtagRepository;
 import com.example.farmingholiday.repository.LikeFarmingHolidayRepository;
@@ -31,7 +31,7 @@ public class GuestMyPageService {
   private final LikeHouseRepository likeHouseRepository;
   private final LikeHostRepository likeHostRepository;
   private final HashtagRepository hashtagRepository;
-  private final FarmingHolidayGuestHouseRepository farmingHolidayGuestHouseRepository;
+  private final ApplyRepository applyRepository;
   
   public MyPageGuestDto getGuestInfo(Long id) {
     Guest guest = guestRepository.findById(id).orElse(null);
@@ -76,11 +76,11 @@ public class GuestMyPageService {
     Guest guest = guestRepository.findById(id).orElse(null);
 
     // 게스트가 신청한 파홀
-    List<FarmingHolidayGuestHouse> applied = farmingHolidayGuestHouseRepository.findAllByGuest(guest);
+    List<Apply> applied = applyRepository.findAllByGuest(guest);
 
     // 신청한 파홀을 [block dto + 승인 상태]를 하나로 묶는 dto list 로 리턴
     List<BlockApplyDto> blockApplyDtoList = new ArrayList<>();
-    for(FarmingHolidayGuestHouse apply : applied){
+    for(Apply apply : applied){
       blockApplyDtoList.add(
           BlockApplyDto.builder()
               .appliedFarmingHoliday(BlockFarmingHolidayDto.from(apply.getFarmingHoliday()))

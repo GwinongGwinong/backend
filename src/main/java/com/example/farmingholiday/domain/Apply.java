@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class FarmingHolidayGuestHouse {
+public class Apply { // update : FarmingHolidayGuest 를 더 취지에 맞는 네이밍으로 변경
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

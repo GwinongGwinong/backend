@@ -15,6 +15,7 @@ import lombok.Setter;
 public class ReviewDto {
     private String title;
     private String content;
+    private String guestName;
     private String farmingHolidayName;
     private double farmingHolidayRate;
     private double hostRate;
@@ -23,9 +24,10 @@ public class ReviewDto {
 
     static public ReviewDto from(Review entity){
       return ReviewDto.builder()
-          .farmingHolidayName(entity.getFarmingHolidayGuestHouse().getFarmingHoliday().getName())
+          .farmingHolidayName(entity.getApply().getFarmingHoliday().getName())
           .title(entity.getTitle())
           .content(entity.getContent())
+          .guestName(entity.getGuestName())
           .farmingHolidayRate(entity.getFarmingHolidayRate())
           .hostRate(entity.getHostRate())
           .houseRate(entity.getHouseRate())

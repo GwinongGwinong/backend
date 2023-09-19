@@ -79,7 +79,11 @@ public class FarmingHoliday {
     @Column(nullable = false)
     private String lon;
 
+    @Column
     private double rate;
+
+    @Column
+    private Long reviewCount;
 
     @OneToMany(mappedBy = "farmingHoliday")
     private List<House> houses;

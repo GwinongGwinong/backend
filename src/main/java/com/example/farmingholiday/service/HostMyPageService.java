@@ -1,14 +1,13 @@
 package com.example.farmingholiday.service;
 
 import com.example.farmingholiday.domain.FarmingHoliday;
-import com.example.farmingholiday.domain.FarmingHolidayGuestHouse;
+import com.example.farmingholiday.domain.Apply;
 import com.example.farmingholiday.domain.Host;
-import com.example.farmingholiday.dto.guest.BlockApplyDto;
 import com.example.farmingholiday.dto.host.ApplicantDto;
 import com.example.farmingholiday.dto.host.MyPageApplicantDto;
 import com.example.farmingholiday.dto.host.MyPageHostDto;
 import com.example.farmingholiday.dto.type.ApprovalStatus;
-import com.example.farmingholiday.repository.FarmingHolidayGuestHouseRepository;
+import com.example.farmingholiday.repository.ApplyRepository;
 import com.example.farmingholiday.repository.FarmingHolidayRepository;
 import com.example.farmingholiday.repository.HashtagRepository;
 import com.example.farmingholiday.repository.HostRepository;
@@ -25,11 +24,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class HostMyPageService {
   private final HostRepository hostRepository;
-  private final LikeFarmingHolidayRepository likeFarmingHolidayRepository;
-  private final LikeHouseRepository likeHouseRepository;
-  private final LikeHostRepository likeHostRepository;
-  private final HashtagRepository hashtagRepository;
-  private final FarmingHolidayGuestHouseRepository farmingHolidayGuestHouseRepository;
+  private final ApplyRepository applyRepository;
   private final FarmingHolidayRepository farmingHolidayRepository;
   
   public MyPageHostDto getHostInfo(Long id) {
@@ -47,28 +42,20 @@ public class HostMyPageService {
     List<ApplicantDto> applicantDtoList = new ArrayList<>();
 
     for(FarmingHoliday farmingHoliday : farmingHolidays){
-      // 파홀-게스트-숙소 리스트
-      List<FarmingHolidayGuestHouse> farmingHolidayGuests = farmingHolidayGuestHouseRepository.findAllByFarmingHoliday(farmingHoliday);
+      // 신청 정보(파홀-게스트-숙소) 리스트
+      List<Apply> applies = applyRepository.findAllByFarmingHoliday(farmingHoliday);
 
       // 목록에 필요한 정보 get
-      for(FarmingHolidayGuestHouse farmingHolidayGuest : farmingHolidayGuests){
-        if((type == 0 && farmingHolidayGuest.getApprovalStatus() == ApprovalStatus.WAITING) // 신청자
-        || (type == 1 && farmingHolidayGuest.getApprovalStatus() == ApprovalStatus.ACCEPTED)){ // 게스트
-
-          String guestName = farmingHolidayGuest.getGuest().getName();
-          String farmingHolidayName = farmingHolidayGuest.getFarmingHoliday().getName();
-          String houseName = farmingHolidayGuest.getHouse().getName();
-          LocalDateTime rentStarDate = farmingHolidayGuest.getHouse().getRentStartDate();
-          LocalDateTime rentEndDate = farmingHolidayGuest.getHouse().getRentEndDate();
-          Long pay = farmingHolidayGuest.getFarmingHoliday().getPay();
-
+      for(Apply apply : applies){
+        if((type == 0 && apply.getApprovalStatus() == ApprovalStatus.WAITING) // 신청자 조회
+        || (type == 1 && apply.getApprovalStatus() == ApprovalStatus.ACCEPTED)){ // 게스트 조회
           applicantDtoList.add(ApplicantDto.builder()
-              .guestName(guestName)
-              .farmingHolidayName(farmingHolidayName)
-              .houseName(houseName)
-              .rentStartDate(rentStarDate)
-              .rentEndDate(rentEndDate)
-              .pay(pay)
+              .guestName(apply.getGuest().getName())
+              .farmingHolidayName(apply.getFarmingHoliday().getName())
+              .houseName(apply.getHouse().getName())
+              .rentStartDate(apply.getHouse().getRentStartDate())
+              .rentEndDate(apply.getHouse().getRentEndDate())
+              .pay(apply.getFarmingHoliday().getPay())
               .build());
         }
       }

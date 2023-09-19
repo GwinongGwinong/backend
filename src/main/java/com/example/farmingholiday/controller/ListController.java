@@ -7,6 +7,7 @@ import com.example.farmingholiday.dto.home.BlockHouseDto;
 import com.example.farmingholiday.service.FarmingHolidayService;
 import com.example.farmingholiday.service.HostService;
 import com.example.farmingholiday.service.HouseService;
+import com.example.farmingholiday.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class ListController {
     final private FarmingHolidayService farmingHolidayService;
     final private HostService hostService;
     final private HouseService houseService;
+    final private ReviewService reviewService;
 
     //TODO :페이징 처리 필요
     @GetMapping("/api/list/farming-holiday")
@@ -38,6 +40,6 @@ public class ListController {
 
     @GetMapping("/api/list/review")
     public List<BlockReviewDto> getReviewList(){
-        reviewService.getBlockReview();
+        return reviewService.getBlockReview();
     }
 }

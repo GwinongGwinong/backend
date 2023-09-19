@@ -69,5 +69,9 @@ public class House {
     @Enumerated(EnumType.STRING)
     private RecruitStatus recruitStatus = RecruitStatus.ON_GOING;
 
+    @Column
     private double rate;
+
+    @Column
+    private double reviewCount;
 }

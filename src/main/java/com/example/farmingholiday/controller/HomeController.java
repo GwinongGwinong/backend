@@ -9,26 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/home")
+@RequiredArgsConstructor
+@RestController
 public class HomeController {
     final private FarmingHolidayService farmingHolidayService;
     final private HostService hostService;
     final private HouseService houseService;
 
-    @Autowired
-    public HomeController(FarmingHolidayService farmingHolidayService, HostService hostService, HouseService houseService) {
-        this.farmingHolidayService = farmingHolidayService;
-        this.hostService = hostService;
-        this.houseService = houseService;
-    }
-
-    //TODO: 리뷰 평점 높은 순으로 정렬해서 리턴
-    @GetMapping
+    // 리뷰 높은 순으로 3,3,4개씩 리턴하도록 바꿈
+    @GetMapping("/api/home")
     public HomePageDto getHomeInfo(){
         HomePageDto homePageDto = new HomePageDto(
-                farmingHolidayService.getBlockFarmingHolidays(),
-                houseService.getBlockHouses(),
-                hostService.getBlockHost()
+                farmingHolidayService.get3BlockFarmingHolidays(),
+                houseService.get3BlockHouses(),
+                hostService.get4BlockHost()
         );
         return homePageDto;
     }

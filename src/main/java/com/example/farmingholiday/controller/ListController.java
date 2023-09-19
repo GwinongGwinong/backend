@@ -7,6 +7,7 @@ import com.example.farmingholiday.dto.FarmingHolidayDto;
 import com.example.farmingholiday.service.FarmingHolidayService;
 import com.example.farmingholiday.service.HostService;
 import com.example.farmingholiday.service.HouseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,18 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController("/list")
+@RequiredArgsConstructor
+@RestController("/api/list")
 public class ListController {
     final private FarmingHolidayService farmingHolidayService;
     final private HostService hostService;
     final private HouseService houseService;
-
-    @Autowired
-    public ListController(FarmingHolidayService farmingHolidayService, HostService hostService, HouseService houseService) {
-        this.farmingHolidayService = farmingHolidayService;
-        this.hostService = hostService;
-        this.houseService = houseService;
-    }
 
     @GetMapping("/farming-holiday")
     public List<BlockFarmingHolidayDto> getFarmingHolidayList(){

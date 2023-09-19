@@ -4,13 +4,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     generate-ddl: true
-    show-sql: true
+    show-sql: false
     database: mysql
     defer-datasource-initialization: true
   # 처음 : ddl-auto: create / generate-ddl: true / spring.sql.init.mode: always
-  # 처음 이후 : ddl-auto: update
+  # 처음 이후 : ddl-auto: update / spring.sql.init.mode: never
 
   mvc:
     pathmatch:
@@ -18,4 +18,4 @@ spring:
 
   sql:
     init:
-      mode: always
+      mode: never

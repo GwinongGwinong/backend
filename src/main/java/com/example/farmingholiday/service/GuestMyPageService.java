@@ -48,7 +48,7 @@ public class GuestMyPageService {
 
     List<BlockHouseDto> likeHouse =
         likeHouseRepository.findAllByGuest(guest).stream()
-            .map(e -> BlockHouseDto.from(e.getHouse())).toList();
+            .map(e -> BlockHouseDto.from(e.getHouse(), e.getHouse().getFarmingHoliday().getHost().getName())).toList();
 
     List<BlockHostDto> likeHost =
         likeHostRepository.findAllByGuest(guest).stream()

@@ -27,14 +27,14 @@ public class HouseService {
     public List<BlockHouseDto> get3BlockHouses(){
         List<House> houses = houseRepository.findTop3ByOrderByRateDesc();
         return houses.stream()
-                .map(BlockHouseDto::from)
+                .map(e -> BlockHouseDto.from(e, e.getFarmingHoliday().getHost().getName()))
                 .collect(Collectors.toList());
     }
 
     public List<BlockHouseDto> getBlockHouses(){
         List<House> houses = houseRepository.findAll();
         return houses.stream()
-            .map(BlockHouseDto::from)
+            .map(e -> BlockHouseDto.from(e, e.getFarmingHoliday().getHost().getName()))
             .collect(Collectors.toList());
     }
 }

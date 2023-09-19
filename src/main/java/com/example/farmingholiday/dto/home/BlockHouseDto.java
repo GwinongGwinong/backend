@@ -24,12 +24,12 @@ public class BlockHouseDto {
     private long rentMonths;
     private RecruitStatus recruitStatus;
 
-    static public BlockHouseDto from(House entity){
+    static public BlockHouseDto from(House entity, String hostName){
         return new BlockHouseDto(
                 entity.getName(),
                 entity.getRate(),
                 entity.getLocation(),
-                "김호스트", //entity.getHost().getName();
+                hostName,
                 entity.getRentStartDate(),
                 entity.getRentEndDate(),
                 entity.getRent(),

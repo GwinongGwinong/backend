@@ -1,9 +1,12 @@
 package com.example.farmingholiday.service;
 
+import com.example.farmingholiday.domain.FarmingHoliday;
 import com.example.farmingholiday.domain.Hashtag;
 import com.example.farmingholiday.domain.Host;
+import com.example.farmingholiday.domain.House;
 import com.example.farmingholiday.dto.BlockHostDto;
 import com.example.farmingholiday.dto.HostDto;
+import com.example.farmingholiday.repository.FarmingHolidayRepository;
 import com.example.farmingholiday.repository.HashtagRepository;
 import com.example.farmingholiday.repository.HostRepository;
 import java.util.ArrayList;
@@ -20,33 +23,32 @@ import java.util.stream.Collectors;
 public class HostService {
     private final HostRepository hostRepository;
     private final HashtagRepository hashtagRepository;
+    private final FarmingHolidayRepository farmingHolidayRepository;
 
-    public HostDto getHost(long id){
-        Optional<Host> host = hostRepository.findById(id);
-        return host.map(HostDto::from).orElse(null);
+    public HostDto getDetailHost(long id){
+        FarmingHoliday farmingHoliday = farmingHolidayRepository.findById(id).orElse(null);
+        Host host = farmingHoliday.getHost();
+        return HostDto.from(host, findHashtag(host));
     }
 
     public List<BlockHostDto> get4BlockHost(){
         List<Host> hosts = hostRepository.findTop4ByOrderByRateDesc();
-        return matchHashtagsToHosts(hosts);
+        return hosts.stream().map(e-> BlockHostDto.from(e, findHashtag(e)))
+            .collect(Collectors.toList());
     }
 
     public List<BlockHostDto> getBlockHost(){
         List<Host> hosts = hostRepository.findAll();
-        return matchHashtagsToHosts(hosts);
+        return hosts.stream().map(e-> BlockHostDto.from(e, findHashtag(e)))
+            .collect(Collectors.toList());
     }
 
-    private List<BlockHostDto> matchHashtagsToHosts(List<Host> hosts){
-        // stream 으로 구현하면 stream 두번 써야해서(어려워서) 이중 for 문으로 만듦
-        List<BlockHostDto> blockHostDtos = new ArrayList<>();
-        for(Host host : hosts){
-            List<Hashtag> hashtags = hashtagRepository.findAllByHost(host);
-            List<String> hashtagContent = new ArrayList<>();
-            for(Hashtag hashtag : hashtags){
-                hashtagContent.add(hashtag.getContent());
-            }
-            blockHostDtos.add(BlockHostDto.from(host, hashtagContent));
+    private List<String> findHashtag(Host host){
+        List<Hashtag> hashtags = hashtagRepository.findAllByHost(host);
+        List<String> hashtagContent = new ArrayList<>();
+        for(Hashtag hashtag : hashtags){
+            hashtagContent.add(hashtag.getContent());
         }
-        return blockHostDtos;
+        return hashtagContent;
     }
 }

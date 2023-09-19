@@ -19,12 +19,12 @@ public class HostDto {
     private String explanation;
     private double rate;
 
-    public static HostDto from(Host entity){
-        return new HostDto(
-                "김아무개",
-                List.of("new hashtags"),
-                entity.getExplanation(),
-                entity.getRate()
-        );
+    public static HostDto from(Host entity, List<String> hashtags){
+        return HostDto.builder()
+            .name(entity.getName())
+            .hashtags(hashtags)
+            .explanation(entity.getExplanation())
+            .rate(entity.getRate())
+            .build();
     }
 }

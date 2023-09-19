@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("/mypage")
 public class MyPageController {
     //TODO: 추후에 authentication이 추가되면 권한에 따라 출력해주는 페이지가 달라지게 설정
-    //
     @GetMapping("/guest/{id}")
     public MyPageGuestDto getGuestMyPageInfo(@PathVariable String id){
         return MyPageGuestDto.builder().build();

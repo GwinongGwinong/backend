@@ -22,6 +22,7 @@ public class ListController {
     final private HostService hostService;
     final private HouseService houseService;
 
+    //TODO :페이징 처리 필요
     @GetMapping("/api/list/farming-holiday")
     public List<BlockFarmingHolidayDto> getFarmingHolidayList(){
         return farmingHolidayService.getBlockFarmingHolidays();

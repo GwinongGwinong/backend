@@ -1,24 +1,27 @@
 package com.example.farmingholiday.service;
 
+import com.example.farmingholiday.domain.FarmingHoliday;
 import com.example.farmingholiday.domain.House;
 import com.example.farmingholiday.dto.BlockHouseDto;
 import com.example.farmingholiday.dto.HouseDto;
+import com.example.farmingholiday.repository.FarmingHolidayRepository;
 import com.example.farmingholiday.repository.HouseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class HouseService {
     private final HouseRepository houseRepository;
+    private final FarmingHolidayRepository farmingHolidayRepository;
 
-    public HouseDto getHouse(long id){
-        Optional<House> house = houseRepository.findById(id);
-        return house.map(HouseDto::from).orElse(null);
+    public List<HouseDto> getDetailHouse(Long id){
+        FarmingHoliday farmingHoliday = farmingHolidayRepository.findById(id).orElse(null);
+        List<House> houses = houseRepository.findAllByFarmingHoliday(farmingHoliday);
+        return houses.stream().map(HouseDto::from).collect(Collectors.toList());
     }
 
     public List<BlockHouseDto> get3BlockHouses(){

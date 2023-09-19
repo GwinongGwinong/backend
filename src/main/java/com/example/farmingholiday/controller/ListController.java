@@ -16,23 +16,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController("/api/list")
+@RestController
 public class ListController {
     final private FarmingHolidayService farmingHolidayService;
     final private HostService hostService;
     final private HouseService houseService;
 
-    @GetMapping("/farming-holiday")
+    @GetMapping("/api/list/farming-holiday")
     public List<BlockFarmingHolidayDto> getFarmingHolidayList(){
         return farmingHolidayService.getBlockFarmingHolidays();
     }
 
-    @GetMapping("/house")
+    @GetMapping("/api/list/house")
     public List<BlockHouseDto> getHouseList(){
         return houseService.getBlockHouses();
     }
 
-    @GetMapping("/host")
+    @GetMapping("/api/list/host")
     public List<BlockHostDto> getHostList(){
         return hostService.getBlockHost();
     }

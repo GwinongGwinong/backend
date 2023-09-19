@@ -73,5 +73,5 @@ public class House {
     private double rate;
 
     @Column
-    private double reviewCount;
+    private Long reviewCount;
 }

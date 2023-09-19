@@ -3,6 +3,8 @@ package com.example.farmingholiday.service;
 import com.example.farmingholiday.domain.FarmingHoliday;
 import com.example.farmingholiday.domain.Apply;
 import com.example.farmingholiday.domain.Guest;
+import com.example.farmingholiday.domain.Host;
+import com.example.farmingholiday.domain.House;
 import com.example.farmingholiday.domain.Review;
 import com.example.farmingholiday.dto.FarmingHolidayNameApplyIdDto;
 import com.example.farmingholiday.dto.ReviewDto;
@@ -36,7 +38,7 @@ public class ReviewService {
   }
 
   public List<BlockReviewDto> get6BlockReview() {
-    List<Review> reviews = reviewRepository.findTop3ByOrderByTime();
+    List<Review> reviews = reviewRepository.findTop6ByOrderByTime();
     return reviews.stream()
         .map(BlockReviewDto::from)
         .collect(Collectors.toList());
@@ -51,11 +53,21 @@ public class ReviewService {
     Guest guest = guestRepository.findById(guestId).orElse(null);
     Apply apply = applyRepository.findById(reviewInputDto.getApplyId()).orElse(null);
 
-    double rate1 = apply.getFarmingHoliday().getRate();
-    reviewRepository.countBy
+    // update farmingHoliday rate
+    FarmingHoliday farmingHoliday = apply.getFarmingHoliday();
+    farmingHoliday.setRate(updateRate(farmingHoliday.getRate(),
+        reviewInputDto.getFarmingHolidayRate(), farmingHoliday.getReviewCount()));
+    farmingHoliday.setReviewCount(farmingHoliday.getReviewCount()+1);
 
-    double newRate1 = (rate1+reviewInputDto.getFarmingHolidayRate())/farmingHoliday.
-        farmingHoliday.setRate(  );
+    // update host rate
+    Host host = farmingHoliday.getHost();
+    host.setRate(updateRate(host.getRate(), reviewInputDto.getHostRate(), host.getReviewCount()));
+    host.setReviewCount(host.getReviewCount()+1);
+
+    // update house rate
+    House house = apply.getHouse();
+    house.setRate(updateRate(house.getRate(), reviewInputDto.getHouseRate(), house.getReviewCount()));
+    house.setReviewCount(house.getReviewCount()+1);
 
     reviewRepository.save(Review.builder()
         .guestName(guest.getName())
@@ -67,6 +79,10 @@ public class ReviewService {
         .HostRate(reviewInputDto.getHostRate())
         .HouseRate(reviewInputDto.getHouseRate())
         .build());
+  }
+
+  private double updateRate(double originRate, double newRate, long number){
+    return (originRate*number + newRate)/(double) (number+1);
   }
 
   public List<FarmingHolidayNameApplyIdDto> getInfoForReview(Long guestId) {

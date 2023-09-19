@@ -1,27 +1,28 @@
-package com.example.farmingholiday.dto;
+package com.example.farmingholiday.dto.detail;
 
-import com.example.farmingholiday.domain.Hashtag;
 import com.example.farmingholiday.domain.Host;
 import lombok.*;
 
 import java.util.List;
 
-// 호스트 미리보기를 위한 정보를 담은 객체
+// 상세페이지 - 호스트
 // 이름 / 해시테크 / 리뷰 수
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BlockHostDto {
+public class HostDto {
     private String name;
     private List<String> hashtags;
+    private String explanation;
     private double rate;
 
-    static public BlockHostDto from(Host entity, List<String> hashtags){
-        return BlockHostDto.builder()
+    public static HostDto from(Host entity, List<String> hashtags){
+        return HostDto.builder()
             .name(entity.getName())
             .hashtags(hashtags)
+            .explanation(entity.getExplanation())
             .rate(entity.getRate())
             .build();
     }

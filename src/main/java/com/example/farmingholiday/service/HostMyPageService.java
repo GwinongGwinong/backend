@@ -1,7 +1,6 @@
 package com.example.farmingholiday.service;
 
 import com.example.farmingholiday.domain.FarmingHoliday;
-import com.example.farmingholiday.domain.FarmingHolidayGuest;
 import com.example.farmingholiday.domain.FarmingHolidayGuestHouse;
 import com.example.farmingholiday.domain.Host;
 import com.example.farmingholiday.dto.guest.BlockApplyDto;

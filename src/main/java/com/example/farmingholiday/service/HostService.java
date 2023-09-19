@@ -3,19 +3,16 @@ package com.example.farmingholiday.service;
 import com.example.farmingholiday.domain.FarmingHoliday;
 import com.example.farmingholiday.domain.Hashtag;
 import com.example.farmingholiday.domain.Host;
-import com.example.farmingholiday.domain.House;
-import com.example.farmingholiday.dto.BlockHostDto;
-import com.example.farmingholiday.dto.HostDto;
+import com.example.farmingholiday.dto.home.BlockHostDto;
+import com.example.farmingholiday.dto.detail.HostDto;
 import com.example.farmingholiday.repository.FarmingHolidayRepository;
 import com.example.farmingholiday.repository.HashtagRepository;
 import com.example.farmingholiday.repository.HostRepository;
 import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

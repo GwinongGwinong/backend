@@ -1,11 +1,10 @@
 package com.example.farmingholiday.service;
 
 import com.example.farmingholiday.domain.FarmingHoliday;
-import com.example.farmingholiday.dto.BlockFarmingHolidayDto;
-import com.example.farmingholiday.dto.FarmingHolidayDto;
+import com.example.farmingholiday.dto.home.BlockFarmingHolidayDto;
+import com.example.farmingholiday.dto.detail.FarmingHolidayDto;
 import com.example.farmingholiday.repository.FarmingHolidayRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

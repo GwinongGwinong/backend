@@ -1,4 +1,4 @@
-package com.example.farmingholiday.dto;
+package com.example.farmingholiday.dto.home;
 
 import com.example.farmingholiday.domain.House;
 import com.example.farmingholiday.dto.type.RecruitStatus;

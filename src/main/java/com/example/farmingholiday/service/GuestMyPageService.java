@@ -1,14 +1,14 @@
 package com.example.farmingholiday.service;
 
-import com.example.farmingholiday.domain.FarmingHolidayGuest;
+
 import com.example.farmingholiday.domain.FarmingHolidayGuestHouse;
 import com.example.farmingholiday.domain.Guest;
 import com.example.farmingholiday.domain.Hashtag;
 import com.example.farmingholiday.domain.Host;
 import com.example.farmingholiday.dto.guest.BlockApplyDto;
-import com.example.farmingholiday.dto.BlockFarmingHolidayDto;
-import com.example.farmingholiday.dto.BlockHostDto;
-import com.example.farmingholiday.dto.BlockHouseDto;
+import com.example.farmingholiday.dto.home.BlockFarmingHolidayDto;
+import com.example.farmingholiday.dto.home.BlockHostDto;
+import com.example.farmingholiday.dto.home.BlockHouseDto;
 import com.example.farmingholiday.dto.guest.MyPageApplyDto;
 import com.example.farmingholiday.dto.guest.MyPageGuestDto;
 import com.example.farmingholiday.dto.guest.MyPageLikesDto;

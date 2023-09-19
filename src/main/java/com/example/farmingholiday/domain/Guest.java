@@ -46,7 +46,7 @@ public class Guest {
     private long earnings;
 
     @OneToMany(mappedBy = "guest")
-    private List<FarmingHolidayGuest> farmingHolidayGuests;
+    private List<FarmingHolidayGuestHouse> farmingHolidayGuests;
 
     public Guest(String email, String password, String name, String birth, String phoneNumber, String address, String imagePath) {
         this.email = email;

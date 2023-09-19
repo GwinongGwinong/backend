@@ -1,7 +1,7 @@
 -- Inserting data into the 'host' table
 INSERT INTO host(email, password, name, birth, phone_number, address, image_path, rate, explanation)
 VALUES
-    ('host1@naver.com', 'test', '양춘식', '000101', '01012345678', '인천시 미추홀구 1층', '이미지 경로', '4.91', '양춘식 호스트 설명'),
+    ('host1@naver.com', 'test', '양춘식', '000101', '01012345678', '전라북도 임실군', '이미지 경로', '4.91', '양춘식 호스트 설명'),
     ('host2@gmail.com', 'test', '김준범', '010203', '01098765432', '서울시 강남구 2층', '이미지 경로', '4.75', '김준범 호스트 설명'),
     ('host3@yahoo.com', 'test', '정은주', '940506', '01055556666', '대구시 중구 3층', '이미지 경로', '4.88', '정은주 호스트 설명'),
     ('host4@gmail.com', 'test', '임지영', '870809', '01012345678', '부산시 해운대구 4층', '이미지 경로', '4.95', '임지영 호스트 설명'),
@@ -17,16 +17,16 @@ VALUES
 -- Inserting data into the 'hashtag' table
 INSERT INTO hashtag(host_id, content)
 VALUES
-    (1, '양봉 30년차'),
-    (1, '꿀벌로 강남 건물주'),
-    (2, '아르키나 과일 재배'),
-    (2, 'SNS 열풍'),
-    (3, '배추농사 13년차'),
-    (3, '겨울철 김장철 매출 6위'),
-    (4, '백설딸기 재배'),
-    (4, '요즘 대세'),
-    (5, '유기농 농장 운영'),
-    (5, '헬스 트레이너');
+    (1, '전라북도 토박이'),
+    (1, '체험형 파밍 홀리데이'),
+    (2, '강원도 산골 청년'),
+    (2, '스키강사 자격증 보유'),
+    (3, '13년차 해녀'),
+    (3, '제주 관광 가이드'),
+    (4, '양식장 운영'),
+    (4, '바다 낚시 투어'),
+    (5, '토마토로 건물주'),
+    (5, '온라인 마켓 운영중');
 
 -- Inserting data into the 'farming_holiday' table
 INSERT INTO farming_holiday(name, location, address, pay, pay_months, main_image_path, detail_image_path, recruit_start_date,
@@ -63,18 +63,6 @@ VALUES
     ('경기도 토마토 농장 체험', '경기도 양주시', '경기도 양주시 백석읍 농업로 789', 180, 6, '메인 이미지 주소',
      '디테일 이미지 주소', '2023-03-20', '2023-08-31', '2023-09-05', '2023-12-15', '주3일', '10:00-16:00 (12:00-13:00 점심)',
      8, 2, 'COMPLETED', '# 경기도 양주 토마토 농사 체험', '37.785241', '126.752217', 4.34, 5);
-
--- Inserting data into the 'farming_holiday_guest' table
-INSERT INTO farming_holiday_guest(farming_holiday_id, guest_id, approval_status)
-VALUES (1, 1, 'ACCEPTED'),
-       (2, 1, 'REFUSED'),
-       (3, 1, 'WAITING'),
-       (4, 2, 'ACCEPTED'),
-       (5, 2, 'REFUSED'),
-       (6, 2, 'WAITING'),
-       (7, 3, 'ACCEPTED'),
-       (8, 3, 'REFUSED'),
-       (9, 3, 'WAITING');
 
 -- For Farming Holiday ID 1 ('임실치즈마을 치즈공업')
 INSERT INTO house(name, location, image_path, rent, rent_months, rent_start_date, rent_end_date, house_type, area,
@@ -120,3 +108,16 @@ VALUES
     3, '인터넷,에어컨,TV', '마당, 주차장, 바베큐, 풀장', '경기도 양주시 백석읍 농업로 789', '37', '127', 'COMPLETED', 4.2, 10),
     ('경기도 토마토 농장 체험 하우스 2', '경기도 양주시', '이미지 경로 16', 16, 3, '2023-03-20', '2023-08-31', '전원주택', 55,
     4, '인터넷,에어컨,TV', '마당, 주차장, 바베큐, 파라솔', '경기도 양주시 백석읍 농업로 789', '37', '127', 'COMPLETED', 4.4, 10);
+
+-- Inserting data into the 'farming_holiday_guest' table
+INSERT INTO farming_holiday_guest_house(farming_holiday_id, guest_id, house_id, approval_status)
+VALUES (1, 1, 1,'ACCEPTED'), -- 임실치즈마을 치즈공업, 손영희, 임실치즈마을 치즈공업 하우스 1
+       (2, 1, 3, 'REFUSED'), -- 무화과 농장 체험, 손영희, 무화과 농장 체험 하우스 1
+       (3, 1, 6, 'WAITING'), -- 전라북도 한우 농장 경영, 손영희, 한우 농장 민박 2
+       (10, 1, 19, 'WAITING'),
+       (4, 2, 8, 'ACCEPTED'),
+       (5, 2, 10, 'REFUSED'),
+       (6, 2, 12,'WAITING'),
+       (7, 3, 13, 'ACCEPTED'),
+       (8, 3, 15,'REFUSED'),
+       (9, 3, 18,'WAITING');

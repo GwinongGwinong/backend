@@ -2,8 +2,8 @@ package com.example.farmingholiday.service;
 
 import com.example.farmingholiday.domain.FarmingHoliday;
 import com.example.farmingholiday.domain.House;
-import com.example.farmingholiday.dto.BlockHouseDto;
-import com.example.farmingholiday.dto.HouseDto;
+import com.example.farmingholiday.dto.home.BlockHouseDto;
+import com.example.farmingholiday.dto.detail.HouseDto;
 import com.example.farmingholiday.repository.FarmingHolidayRepository;
 import com.example.farmingholiday.repository.HouseRepository;
 import lombok.RequiredArgsConstructor;

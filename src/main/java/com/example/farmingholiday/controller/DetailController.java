@@ -1,11 +1,10 @@
 package com.example.farmingholiday.controller;
 
-import com.example.farmingholiday.dto.DetailPageDto;
+import com.example.farmingholiday.dto.detail.DetailPageDto;
 import com.example.farmingholiday.service.FarmingHolidayService;
 import com.example.farmingholiday.service.HostService;
 import com.example.farmingholiday.service.HouseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

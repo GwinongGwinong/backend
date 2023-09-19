@@ -1,8 +1,7 @@
 package com.example.farmingholiday.dto.guest;
 
-import com.example.farmingholiday.dto.BlockFarmingHolidayDto;
+import com.example.farmingholiday.dto.home.BlockFarmingHolidayDto;
 import com.example.farmingholiday.dto.type.ApprovalStatus;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,32 +1,31 @@
 package com.example.farmingholiday.controller;
 
-import com.example.farmingholiday.dto.HomePageDto;
+import com.example.farmingholiday.dto.home.HomePageDto;
 import com.example.farmingholiday.service.FarmingHolidayService;
 import com.example.farmingholiday.service.HostService;
 import com.example.farmingholiday.service.HouseService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.farmingholiday.service.ReviewService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/home")
+@RequiredArgsConstructor
+@RestController
 public class HomeController {
     final private FarmingHolidayService farmingHolidayService;
     final private HostService hostService;
     final private HouseService houseService;
-    @Autowired
-    public HomeController(FarmingHolidayService farmingHolidayService, HostService hostService, HouseService houseService) {
-        this.farmingHolidayService = farmingHolidayService;
-        this.hostService = hostService;
-        this.houseService = houseService;
-    }
+    final private ReviewService reviewService;
 
-    //TODO: 리뷰 평점 높은 순으로 정렬해서 리턴
-    @GetMapping
-    public HomePageDto getHomeInfo(){
+    // 리뷰 높은 순으로 3,3,4,6개씩 리턴
+    @GetMapping("/api/home/{guestId}")
+    public HomePageDto getHomeInfo(@PathVariable Long guestId){ //TODO: 인증 후 수정
         HomePageDto homePageDto = new HomePageDto(
-                farmingHolidayService.getBlockFarmingHolidays(),
-                houseService.getBlockHouses(),
-                hostService.getBlockHost()
+                farmingHolidayService.get3BlockFarmingHolidays(guestId),
+                houseService.get3BlockHouses(guestId),
+                hostService.get4BlockHost(guestId),
+                reviewService.get6BlockReview()
         );
         return homePageDto;
     }

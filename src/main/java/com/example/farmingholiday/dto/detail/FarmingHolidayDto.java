@@ -1,6 +1,7 @@
-package com.example.farmingholiday.dto;
+package com.example.farmingholiday.dto.detail;
 
 import com.example.farmingholiday.domain.FarmingHoliday;
+import com.example.farmingholiday.dto.type.RecruitStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -32,8 +33,10 @@ public class FarmingHolidayDto {
     private String explanation;
     private String lat;
     private String lon;
+    private long id;
+    private boolean isLike;
 
-    public static FarmingHolidayDto from(FarmingHoliday entity){
+    public static FarmingHolidayDto from(FarmingHoliday entity, boolean isLike){
         return new FarmingHolidayDto(
                 entity.getName(),
                 entity.getLocation(),
@@ -52,7 +55,9 @@ public class FarmingHolidayDto {
                 entity.getRecruitStatus(),
                 entity.getExplanation(),
                 entity.getLat(),
-                entity.getLon()
+                entity.getLon(),
+                entity.getId(),
+                isLike
         );
     }
 }

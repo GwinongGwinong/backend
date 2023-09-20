@@ -30,9 +30,9 @@ import org.springframework.context.annotation.Configuration;
 //    }
 //
 //    private ApiInfo apiInfo() {
-//        String description = "날씨 일기를 CRUD 할 수 있는 프로젝트입니다.";
+//        String description = "";
 //        return new ApiInfoBuilder()
-//                .title("영서의 날씨 일기 프로젝트 :)")
+//                .title("")
 //                .description(description)
 //                .version("2.0")
 //                .build();

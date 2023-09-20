@@ -1,8 +1,7 @@
 package com.example.farmingholiday.repository;
 
+import com.example.farmingholiday.domain.Guest;
 import com.example.farmingholiday.domain.Host;
-import com.example.farmingholiday.domain.Users;
-import com.example.farmingholiday.dto.UserType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,35 +19,37 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest
 public class JpaRepositoryTest {
     private final FarmingHolidayRepository farmingHolidayRepository;
-    private final FarmingHolidayGuestRepository farmingHolidayGuestRepository;
+    private final ApplyRepository applyRepository;
     private final GuestRepository guestRepository;
     private final HashtagRepository hashtagRepository;
     private final HostRepository hostRepository;
     private final HouseRepository houseRepository;
-    private final LikesRepository likesRepository;
+    private final LikeFarmingHolidayRepository likeFarmingHolidayRepository;
+    private final LikeHostRepository likeHostRepository;
+    private final LikeHouseRepository likeHouseRepository;
     private final NewsRepository newsRepository;
-    private final UserRepository userRepository;
-
 
     public JpaRepositoryTest(
             @Autowired FarmingHolidayRepository farmingHolidayRepository,
-            @Autowired FarmingHolidayGuestRepository farmingHolidayGuestRepository,
+            @Autowired ApplyRepository applyRepository,
             @Autowired GuestRepository guestRepository,
             @Autowired HashtagRepository hashtagRepository,
             @Autowired HostRepository hostRepository,
             @Autowired HouseRepository houseRepository,
-            @Autowired LikesRepository likesRepository,
-            @Autowired NewsRepository newsRepository,
-            @Autowired UserRepository userRepository) {
+            @Autowired LikeFarmingHolidayRepository likeFarmingHolidayRepository,
+            @Autowired LikeHostRepository likeHostRepository,
+            @Autowired LikeHouseRepository likeHouseRepository,
+            @Autowired NewsRepository newsRepository) {
         this.farmingHolidayRepository = farmingHolidayRepository;
-        this.farmingHolidayGuestRepository = farmingHolidayGuestRepository;
+        this.applyRepository = applyRepository;
         this.guestRepository = guestRepository;
         this.hashtagRepository = hashtagRepository;
         this.hostRepository = hostRepository;
         this.houseRepository = houseRepository;
-        this.likesRepository = likesRepository;
+        this.likeFarmingHolidayRepository = likeFarmingHolidayRepository;
+        this.likeHostRepository = likeHostRepository;
+        this.likeHouseRepository = likeHouseRepository;
         this.newsRepository = newsRepository;
-        this.userRepository = userRepository;
     }
 
 
@@ -59,29 +60,28 @@ public class JpaRepositoryTest {
         //When
         hostRepository.findAll().stream().map(Host::getExplanation).forEach(System.out::println);
         //Then
-
     }
 
     @DisplayName("2. insert 테스트")
     @Test
     void givenTest_whenInserting_thenWorksFine(){
         //Given
-        long previousCount = userRepository.count();
+        long previousCount = guestRepository.count();
         //When
-        Users users = userRepository
-                .save(Users.of(UserType.GUEST, "inderby@naver.com", "123", "김용빈", "5월8일","123-123","인하대", "인하대 후문", "local"));
+        Guest guest = guestRepository.save(Guest.of("inderby@naver.com", "123", "김용빈",
+                        "5월8일","123-123","인하대 후문", "image"));
         //Then
-        assertThat(userRepository.count()).isEqualTo(previousCount+1);
+        assertThat(guestRepository.count()).isEqualTo(previousCount+1);
     }
     @DisplayName("3. update테스트")
     @Test
     void givenTestData_whenUpdating_whenWorkFine(){
         //Given
-        Users users = userRepository.findById(1L).orElseThrow();
-        users.setName("김호떡");
+        Guest guest = guestRepository.findById(1L).orElseThrow();
+        guest.setName("김호떡");
         //When
-        Users savedUsers = userRepository.saveAndFlush(users);
+        Guest savedGuest = guestRepository.saveAndFlush(guest);
         //Then
-        assertThat(savedUsers.getName()).isEqualTo("김호떡");
+        assertThat(savedGuest.getName()).isEqualTo("김호떡");
     }
 }

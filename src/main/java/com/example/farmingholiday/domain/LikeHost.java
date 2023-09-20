@@ -1,13 +1,19 @@
 package com.example.farmingholiday.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class Hashtag {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class LikeHost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -15,6 +21,6 @@ public class Hashtag {
     @ManyToOne
     private Host host;
 
-    @Column(length = 200)
-    private String Content;
+    @ManyToOne
+    private Guest guest;
 }

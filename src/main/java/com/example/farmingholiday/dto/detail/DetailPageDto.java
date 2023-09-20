@@ -1,4 +1,4 @@
-package com.example.farmingholiday.dto;
+package com.example.farmingholiday.dto.detail;
 
 import lombok.*;
 
@@ -11,6 +11,6 @@ import java.util.List;
 @Builder
 public class DetailPageDto {
     private FarmingHolidayDto farmingHoliday;
-    private HouseDto house;
+    private List<HouseDto> house;
     private HostDto host;
 }

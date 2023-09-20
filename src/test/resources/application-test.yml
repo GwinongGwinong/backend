@@ -2,6 +2,7 @@ spring:
   h2:
     console:
       enabled: true
+
   jpa:
     database: h2
     database-platform: org.hibernate.dialect.MySQL8Dialect
@@ -16,6 +17,10 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:tcp://localhost/~/my-db-test;mode=mysql;
-    username: SA
+    username: sa
     password:
-    initialization-mode: always
+  sql:
+    init:
+      mode: always
+#   spring:datasource:initialization-mode가 deprecated 되었다 해서
+#   spring:init:mode: always로 변경

@@ -1,8 +1,8 @@
 package com.example.farmingholiday.service;
 
 import com.example.farmingholiday.domain.FarmingHoliday;
-import com.example.farmingholiday.dto.BlockFarmingHolidayDto;
-import com.example.farmingholiday.dto.FarmingHolidayDto;
+import com.example.farmingholiday.dto.home.BlockFarmingHolidayDto;
+import com.example.farmingholiday.dto.detail.FarmingHolidayDto;
 import com.example.farmingholiday.repository.FarmingHolidayRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

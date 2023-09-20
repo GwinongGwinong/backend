@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-
+@Setter
 @Getter
 @Entity
 public class Host {
@@ -14,29 +14,36 @@ public class Host {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
-    private Users users;
+    @Column(nullable = false)
+    private String email;
 
-    @OneToMany
-    private List<FarmingHolidayGuest> farmingHolidayGuest;
+    @Column(nullable = false)
+    private String password;
 
-    @Setter
-    @OneToMany(orphanRemoval = false)
-    private List<Hashtag> hashtags;
+    @Column(nullable = false)
+    private String name;
 
-    @Setter
-    @OneToMany(orphanRemoval = false)
-    private List<FarmingHoliday> farmingHolidays;
+    @Column(nullable = false)
+    private String birth;
 
-    @Setter
-    @OneToMany(orphanRemoval = false)
-    private List<House> houses;
+    @Column(nullable = false)
+    private String phoneNumber;
 
-    @Setter
-    @Column
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private String imagePath;
+
+    @Column(columnDefinition ="DOUBLE DEFAULT 0")
     private double rate;
 
-    @Setter
+    @Column(columnDefinition ="BIGINT DEFAULT 0")
+    private Long reviewCount;
+
     @Column(length = 10000)
     private String explanation;
+
+    @OneToMany(mappedBy = "host")
+    private List<FarmingHoliday> farmingHolidays;
 }

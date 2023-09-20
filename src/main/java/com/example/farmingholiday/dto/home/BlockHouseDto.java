@@ -1,6 +1,7 @@
-package com.example.farmingholiday.dto;
+package com.example.farmingholiday.dto.home;
 
 import com.example.farmingholiday.domain.House;
+import com.example.farmingholiday.dto.type.RecruitStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -22,19 +23,22 @@ public class BlockHouseDto {
     private long rent;
     private long rentMonths;
     private RecruitStatus recruitStatus;
+    private long id;
+    private boolean isLike;
 
-    static public BlockHouseDto from(House entity){
+    static public BlockHouseDto from(House entity, String hostName, boolean isLike){
         return new BlockHouseDto(
                 entity.getName(),
                 entity.getRate(),
                 entity.getLocation(),
-                "김호스트", //entity.getHost().getName();
+                hostName,
                 entity.getRentStartDate(),
                 entity.getRentEndDate(),
                 entity.getRent(),
                 entity.getRentMonths(),
-                entity.getRecruitStatus()
+                entity.getRecruitStatus(),
+                entity.getId(),
+                isLike
         );
     }
-
 }

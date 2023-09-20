@@ -1,17 +1,14 @@
 package com.example.farmingholiday.domain;
 
-import com.example.farmingholiday.dto.ApprovalStatus;
+import com.example.farmingholiday.dto.type.ApprovalStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-// 게스트가 신청한 파밍 홀리데이 정보를 담는 관계 테이블
-// 게스트는 여러 파홀을 신청할 수 있음
-// 파홀은 여러 게스트의 신청을 받을 수 있음
-
 @Getter
+@Setter
 @Entity
-public class FarmingHolidayGuest {
+public class Apply { // update : FarmingHolidayGuest 를 더 취지에 맞는 네이밍으로 변경
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -22,10 +19,9 @@ public class FarmingHolidayGuest {
     @ManyToOne
     private Guest guest;
 
-    @ManyToOne
-    private Host host;
+    @ManyToOne // update : 파홀 - 신청자의 관계가 끝이라 생각했는데, 생각해보니 숙소도 같이 신청하는거였음
+    private House house;
 
-    @Setter
     @Enumerated(EnumType.STRING)
     private ApprovalStatus approvalStatus = ApprovalStatus.WAITING;
 }

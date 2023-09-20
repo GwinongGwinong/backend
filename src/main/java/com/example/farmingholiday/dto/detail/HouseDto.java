@@ -1,4 +1,4 @@
-package com.example.farmingholiday.dto;
+package com.example.farmingholiday.dto.detail;
 
 import com.example.farmingholiday.domain.House;
 import lombok.*;
@@ -26,10 +26,11 @@ public class HouseDto {
     private double rate;
     private String lat;
     private String lon;
+    private long id;
+    private boolean isLike;
 
 
-
-    public static HouseDto from(House entity){
+    public static HouseDto from(House entity, boolean isLike){
         return new HouseDto(
                 entity.getCapacity(),
                 entity.getName(),
@@ -43,7 +44,9 @@ public class HouseDto {
                 entity.getOutFacilities(),
                 entity.getRate(),
                 entity.getLat(),
-                entity.getLon()
+                entity.getLon(),
+                entity.getId(),
+                isLike
         );
     }
 }
